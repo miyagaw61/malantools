@@ -60,7 +60,10 @@ except:
     traceback.print_exc()
     exit()
 
-cmd = f"cat {log_file} | head -n {finish_linenr} | tail -n $(({finish_linenr} - {start_linenr} + 1)) > {out_file}"
+start_linenr = int(start_linenr)
+finish_linenr = int(finish_linenr)
+tail_arg = finish_linenr - start_linenr + 1
+cmd = f"head -n {finish_linenr} {log_file} | tail -n {tail_arg} > {out_file}"
 Shell(cmd).call()
 cmd = f"sed -E 's@^[^,]+,@@g' -i {out_file}"
 Shell(cmd).call()

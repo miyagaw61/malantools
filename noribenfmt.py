@@ -71,3 +71,40 @@ cmd = f"sed -E 's@^([^,]+,)([^,]+,)([^,]+,)@\\1\\3@g' -i {out_file}"
 Shell(cmd).call()
 cmd = f"sed -E 's@^(.*)([^,]+),([^,]+,)([^,]+$)@\\1\\2@g' -i {out_file}"
 Shell(cmd).call()
+
+cmd = f"sed -E 's@(reateFile.*OpenResult: Created)@G\\1@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@(reateFile.*Desired Access: Delete)@G\\1@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@.*CreateFile.*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@CGreateFile@CreateFile@g' -i {out_file}"
+Shell(cmd).call()
+
+cmd = f"sed -E 's@.*CloseFile.*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@.*LockFile.*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@.*UnlockFileSingle.*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^\"csrss.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^\"MsMpEng.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^\"svchost.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^\"OneDrive.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^\"Conhost.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^\"VBoxTray.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^\"TiWorker.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^\"ctfmon.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@.*RegSetInfoKey.*KeySetInformationClass:\\sKeySetHandleTagsInformation,\\sLength:\\s0.*@@g' -i {out_file}"
+Shell(cmd).call()
+
+cmd = f"grep -v -e '^\s*$' {out_file} > noribenfmt.tmp && mv noribenfmt.tmp {out_file}"
+Shell(cmd).call()

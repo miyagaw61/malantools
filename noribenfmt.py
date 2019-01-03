@@ -65,9 +65,9 @@ finish_linenr = int(finish_linenr)
 tail_arg = finish_linenr - start_linenr + 1
 cmd = f"head -n {finish_linenr} {log_file} | tail -n {tail_arg} > {out_file}"
 Shell(cmd).call()
-cmd = f"sed -E 's@^[^,]+,@@g' -i {out_file}"
-Shell(cmd).call()
-cmd = f"sed -E 's@^([^,]+,)([^,]+,)([^,]+,)@\\1\\3@g' -i {out_file}"
+#cmd = f"sed -E 's@^[^,]+,@@g' -i {out_file}"
+#Shell(cmd).call()
+cmd = f"sed -E 's@^([^,]+,)([^,]+,)([^,]+,)([^,]+,)@\\1\\2\\4@g' -i {out_file}"
 Shell(cmd).call()
 cmd = f"sed -E 's@^(.*)([^,]+),([^,]+,)([^,]+$)@\\1\\2@g' -i {out_file}"
 Shell(cmd).call()
@@ -87,22 +87,85 @@ cmd = f"sed -E 's@.*LockFile.*@@g' -i {out_file}"
 Shell(cmd).call()
 cmd = f"sed -E 's@.*UnlockFileSingle.*@@g' -i {out_file}"
 Shell(cmd).call()
-cmd = f"sed -E 's@^\"csrss.exe\".*@@g' -i {out_file}"
+
+# optional
+cmd = f"sed -E 's@.*QueryAttributeInformationVolume.*@@g' -i {out_file}"
 Shell(cmd).call()
-cmd = f"sed -E 's@^\"MsMpEng.exe\".*@@g' -i {out_file}"
+cmd = f"sed -E 's@.*QueryInformationVolume.*@@g' -i {out_file}"
 Shell(cmd).call()
-cmd = f"sed -E 's@^\"svchost.exe\".*@@g' -i {out_file}"
+cmd = f"sed -E 's@.*QuerySizeInformationVolume.*@@g' -i {out_file}"
 Shell(cmd).call()
-cmd = f"sed -E 's@^\"OneDrive.exe\".*@@g' -i {out_file}"
+cmd = f"sed -E 's@.*DeviceIoControl.*@@g' -i {out_file}"
 Shell(cmd).call()
-cmd = f"sed -E 's@^\"Conhost.exe\".*@@g' -i {out_file}"
+
+cmd = f"sed -E 's@^[^,]+,\"fakenet.exe\".*@@g' -i {out_file}"
 Shell(cmd).call()
-cmd = f"sed -E 's@^\"VBoxTray.exe\".*@@g' -i {out_file}"
+cmd = f"sed -E 's@^[^,]+,\"csrss.exe\".*@@g' -i {out_file}"
 Shell(cmd).call()
-cmd = f"sed -E 's@^\"TiWorker.exe\".*@@g' -i {out_file}"
+cmd = f"sed -E 's@^[^,]+,\"MsMpEng.exe\".*@@g' -i {out_file}"
 Shell(cmd).call()
-cmd = f"sed -E 's@^\"ctfmon.exe\".*@@g' -i {out_file}"
+cmd = f"sed -E 's@^[^,]+,\"svchost.exe\".*@@g' -i {out_file}"
 Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"OneDrive.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"Conhost.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"VBoxTray.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"TiWorker.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"ctfmon.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+
+cmd = f"sed -E 's@^[^,]+,\"CompatTelRunner.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"compattelrunner.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"DllHost.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"MusNotification.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"MusNotificationUx.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"ngen.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"NGenTask.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"mscorsvw.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"OneDriveStandaloneUpdater.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"RuntimeBroker.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"SearchFilterHost.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"TrustedInstaller.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"sihclient.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"VBoxService.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"WMIADAP.EXE\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"devicecensus.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"fontdrvhost.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+
+# optional
+cmd = f"sed -E 's@^[^,]+,\"services.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"svchost.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"sppsvc.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"usoclient.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"wuapihost.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+cmd = f"sed -E 's@^[^,]+,\"Upfc.exe\".*@@g' -i {out_file}"
+Shell(cmd).call()
+
 cmd = f"sed -E 's@.*RegSetInfoKey.*KeySetInformationClass:\\sKeySetHandleTagsInformation,\\sLength:\\s0.*@@g' -i {out_file}"
 Shell(cmd).call()
 
